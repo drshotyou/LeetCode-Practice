@@ -23,3 +23,7 @@ def binSearch(nums,target,left,right):
             return binSearch(nums,target,left,mid-1)
         else:
             return binSearch(nums,target,mid+1,right)
+
+
+#Time complexity: O(logN)
+#Space complexity: O(logN)
