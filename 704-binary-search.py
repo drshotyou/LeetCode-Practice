@@ -11,8 +11,6 @@ class Solution(object):
             return binSearch(nums,target,0,len(nums))
         
 def binSearch(nums,target,left,right):
-    
-    
     if(right-left+1) <= 0:
         return -1;
     else:
