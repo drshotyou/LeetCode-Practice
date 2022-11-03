@@ -24,3 +24,22 @@ class Solution:
             target-=1
         # print(temp)
         return temp
+
+# v2
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        current = head
+        length = 1
+        while(current.next):
+            length+=1
+            current = current.next
+        current = head
+        length = length//2 
+        for i in range(length):
+            current = current.next
+        return current
