@@ -24,3 +24,30 @@ class Solution:
                 return False;
         return True
             
+
+#v2 done in one loop
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        longest = None
+        if(len(s)>len(t)):
+            longest = len(s)
+        else:
+            longest = len(t)
+        sStack = []
+        tStack = []
+        for i in range(longest):
+            if(i < len(s)):
+                if(s[i]!='#'):
+                    sStack.append(s[i])
+                else:
+                    if(sStack):
+                        sStack.pop()
+            if(i < len(t)):
+                if(t[i]!='#'):
+                    tStack.append(t[i])
+                else:
+                    if(tStack):
+                        tStack.pop()
+
+        if(sStack == tStack): return True
+        else : return False
