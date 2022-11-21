@@ -43,3 +43,23 @@ def preOrderTraverse(root,nodes):
                 nodes = preOrderTraverse(i,nodes)
     # print(nodes)
     return nodes
+
+#v3 No need to check for children, loop takes care of it
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+"""
+# root left right
+class Solution:
+    def preorder(self, root: 'Node') -> List[int]:
+        nodes = []
+        return preOrderTraverse(root,nodes)
+def preOrderTraverse(root,nodes):
+    if root:
+        nodes.append(root.val)
+        for children in root.children:
+            nodes = preOrderTraverse(children,nodes)
+    return nodes
