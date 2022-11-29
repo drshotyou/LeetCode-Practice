@@ -25,3 +25,67 @@ class Solution:
                 middle = True
         # print(palindrome)
         return len(palindrome)
+
+#v2 bad performance best was 70% time
+        sHash = {}
+        for i in range(len(s)):
+            if s[i] in sHash:
+                sHash[s[i]] = 1 + sHash.get(s[i],0)
+            else:
+                sHash[s[i]] = 1
+        
+        ans = []
+        odd = False
+        for key in sHash:
+            if(sHash[key] >= 2):
+                while(sHash[key] >= 2):
+                    ans.insert(0,key)
+                    ans.append(key)
+                    sHash[key] -= 2
+            if (sHash[key] % 2 != 0 and not odd):
+                middle = len(ans) // 2
+                ans.insert(middle,key)
+                sHash[key] -= 1
+                odd = True
+        
+        # print(ans)
+        return len(ans)
+
+#v2 optimized best was 85% time
+    sHash = {}
+    for i in range(len(s)):
+        if s[i] in sHash:
+            sHash[s[i]] = 1 + sHash.get(s[i],0)
+        else:
+            sHash[s[i]] = 1
+    
+    ans = ''
+    odd = False
+    insert = 0
+    for key in sHash:
+        if(sHash[key] >= 2):
+            while(sHash[key] >= 2):
+                ans = key + ans + key
+                sHash[key] -= 2
+                insert+= 1
+        if (sHash[key] % 2 != 0 and not odd):
+            
+            ans = ans[:insert] + key + ans[insert:]
+            sHash[key] -= 1
+            odd = True
+    
+    # print(ans)
+    return len(ans)
+
+
+    # All these versions really on actually building the palindrome, but we dont really need to
+    #v4 best is 98.83% time 67.22% space
+    odd = 0
+    ans = 0
+    for count in Counter(s).values():
+        if count%2 == 0:
+            ans+=count
+        else:
+            odd = 1
+            ans += count - 1
+    return ans + odd

@@ -39,3 +39,42 @@ def binSearch(left,right):
             return binSearch(left,mid-1)
     else:
         return binSearch(mid+1,right)
+
+#v3 Better than 97% optimize for extreme cases
+class Solution:
+    def firstBadVersion(self, n: int) -> int:
+        if(isBadVersion(1)):
+            return 1
+        elif(isBadVersion(n) and not isBadVersion(n-1)):
+            return n
+        return binSearch(1,n)
+
+def binSearch(left,right):
+    mid = left + (right - left) // 2
+    if(isBadVersion(mid)):
+        if(not isBadVersion(mid-1)):
+            return mid
+        else:
+            return binSearch(left,mid-1)
+    else:
+        return binSearch(mid+1,right)
+
+#v5 tried doing it with a loop today
+# The isBadVersion API is already defined for you.
+# def isBadVersion(version: int) -> bool:
+
+class Solution:
+    def firstBadVersion(self, n: int) -> int:
+        left = 0
+        right = n
+        while(left<=right):
+            mid = left + (right - left)//2
+            if(isBadVersion(mid)):
+                if(not isBadVersion(mid-1)):
+                    return mid
+                else:
+                    right = mid -1
+            else:
+                left = mid + 1
+
+                
