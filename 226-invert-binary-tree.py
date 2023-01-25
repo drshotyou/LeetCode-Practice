@@ -28,7 +28,7 @@ class Solution:
                 root.right = None
                 root.left = temp
                 self.traverse(root.left)
-                
+
     # optimized method
     def inverse(self,root):
         if root:
@@ -38,3 +38,6 @@ class Solution:
             return root
         else:
             return None
+
+# Time complexity O(n) at most you have to visit all nodes to swap them
+#  Space complexity O(1) we are not using any extra memory
