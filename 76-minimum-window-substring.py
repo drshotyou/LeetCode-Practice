@@ -1,6 +1,6 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        if len(s) < len(t) return ""
+        if len(s) < len(t): return ""
         countT = Collections.Counter(t)
         window = {}
         l = 0
