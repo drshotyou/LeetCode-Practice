@@ -1,0 +1,9 @@
+This code implements the merge sort algorithm to sort a singly linked list in ascending order. It recursively splits the input list into two halves, sorts them separately using merge sort, and then merges the two sorted lists.
+
+The `sortList` function is the main driver function that takes the head of the input list as input, and returns the sorted list. If the input list is empty or contains only one element, it is already sorted and can be returned as is.
+
+The `midPoint` function takes the head of a list as input and returns the midpoint node of the list. It uses a slow and a fast pointer to traverse the list, with the slow pointer advancing by one node per iteration, and the fast pointer advancing by two nodes per iteration. When the fast pointer reaches the end of the list, the slow pointer will be pointing at the midpoint node. The function also splits the list in half by setting the next pointer of the node before the midpoint to `None`.
+
+The `merge` function takes two sorted lists as input, and merges them into a single sorted list. It uses a dummy node as the head of the merged list, and a current pointer to traverse the merged list. The function compares the values of the current nodes in the two input lists, and appends the node with the smaller value to the merged list. The current pointer and the pointer of the input list that contributed the node are then advanced. The process continues until one of the input lists is exhausted, at which point the remaining nodes in the other list are appended to the merged list.
+
+Overall, this code has a time complexity of O(n log n), where n is the length of the input list, because it performs a total of log n recursive calls to `sortList`, each of which takes O(n) time to split the input list and merge the sorted halves. The space complexity is O(log n) due to the log n recursive calls on the call stack.
